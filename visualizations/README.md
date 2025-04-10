@@ -17,7 +17,7 @@ And the loss is minimized via gradient descent.
 ### Demo 
 
 <p align="center">
-  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3lrODUzeTB6djk5cmUybGF4b25rZW9yaWlyNDltdHZ6NWhoMG15cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/DteIxVYQxn9xQVcTMf/giphy.gif" alt="Demo GIF" width="600"/>
+  <img src="diagrams/tsne.gif" alt="Demo GIF" width="600"/>
 </p>
 
 ### Guide to Usage 
@@ -30,6 +30,16 @@ And the loss is minimized via gradient descent.
 
 ### Caveats
 
-Time Complexity: t-SNE is quadratic (really really slow) in terms of its sample size. Even for $n=50,000$, it'll take a few minutes to fully plot. If the dataset has ~1 million data points, it'll take hours, and for anything greater we should just consider a sample. 
+**Time Complexity**: t-SNE is quadratic (really really slow) in terms of its sample size. Even for $n=50,000$, it'll take a few minutes to fully plot. If the dataset has ~1 million data points, it'll take hours, and for anything greater we should just consider a sample. 
 
 Global Structure: t-SNE prefers local structure over global structure. That is, the distances between clusters in the low-dimensional space are effectively meaningless. 
+
+## Regression Visuals
+
+**Distribution Fitting**: We can use the `distfit` library to automatically fit a theoretical/named distribution to our target variable (or even just a single column from our training set). 
+
+<p align="center">
+  <img src="diagrams/distributions1.png" alt="Demo GIF" width="600"/>
+</p>
+
+NOTE: `distfit` lets you fit the entire 2D array X, but I found that this computationally infeasible even for small datasets. 

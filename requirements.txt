@@ -1,0 +1,6 @@
+opentsne
+scikit-learn
+torch
+torchvision
+pandas 
+matplotlib

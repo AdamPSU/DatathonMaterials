@@ -34,12 +34,46 @@ And the loss is minimized via gradient descent.
 
 Global Structure: t-SNE prefers local structure over global structure. That is, the distances between clusters in the low-dimensional space are effectively meaningless. 
 
-## Regression Visuals
+# AutoGluon & Feature Importance
 
-**Distribution Fitting**: We can use the `distfit` library to automatically fit a theoretical/named distribution to our target variable (or even just a single column from our training set). 
+AutoGluon is an AutoML kit made by AWS. It makes really good models, automatically. As in, it automates data pre-processing, model selection, hyperparameter tuning, and ensembling, all within ~3 lines of code. It supports tabular, image, time series, and text data modalities. 
+
+### Traditional vs. AutoGluon
+
+
+| Step                     | Traditional ML Effort     | AutoGluon              |
+|--------------------------|----------------------------|-------------------------|
+| Data preprocessing       | Manual & time-consuming    | ✅ Done automatically   |
+| Model selection          | Trial-and-error            | ✅ Dozens trained       |
+| Hyperparameter tuning    | Grid search/manual         | ✅ Automatic search     |
+| Ensembling               | Advanced technique         | ✅ Built-in             |
+| Cross-validation         | Manual split               | ✅ Automated            |
+| Interpretability         | Requires setup        | ✅ Built-in             |
+| Saving/loading models    | Extra code                 | ✅ Easy commands        |
+
+### Permutation Importances 
+
+By calling `predictor.feature_importance(data)
+`, we can assess the usefulness of features in the original dataset. When we do this, Autogluon...
+
+1. Evaluates the model's performance on the original data on a given metric  
+2. For each feature, shuffles its values, and measures the drop in performance on the same data
+3. Computes importance of that feature
+
+### Visualizing Importance 
 
 <p align="center">
-  <img src="diagrams/distributions1.png" alt="Demo GIF" width="600"/>
+  <img src="diagrams/pimp.png" alt="PIMP" width="600"/>
+</p>
+
+# Distfit
+
+We can use the `distfit` library to automatically fit a theoretical/named distribution to our target variable (or even just a single column from our training set). 
+
+<p align="center">
+  <img src="diagrams/distributions1.png" alt="Distribution Anly." width="600"/>
 </p>
 
 NOTE: `distfit` lets you fit the entire 2D array X, but I found that this computationally infeasible even for small datasets. 
+
+

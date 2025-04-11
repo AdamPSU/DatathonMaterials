@@ -1,7 +1,4 @@
 opentsne
-scikit-learn
-torch
-torchvision
-pandas 
+autogluon
 matplotlib
 seaborn
